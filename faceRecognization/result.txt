@@ -1,0 +1,17 @@
+[                                            identity  ...  VGG-Face_cosine
+0  /Users/siyiwang/Desktop/wsy/CV/deepface/tests/...  ...     7.771561e-16
+1  /Users/siyiwang/Desktop/wsy/CV/deepface/tests/...  ...     1.514312e-01
+2  /Users/siyiwang/Desktop/wsy/CV/deepface/tests/...  ...     2.495437e-01
+3  /Users/siyiwang/Desktop/wsy/CV/deepface/tests/...  ...     2.496264e-01
+4  /Users/siyiwang/Desktop/wsy/CV/deepface/tests/...  ...     2.811044e-01
+
+[5 rows x 6 columns]]['/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img3.jpg' 363 349
+ 835 835 7.771561172376096e-16]
+['/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img56.jpg' 363 349
+ 835 835 0.1514311996317006]
+['/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img54.jpg' 363 349
+ 835 835 0.24954365840025627]
+['/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img55.jpg' 363 349
+ 835 835 0.24962643257715622]
+['/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img12.jpg' 363 349
+ 835 835 0.2811043825454106]
