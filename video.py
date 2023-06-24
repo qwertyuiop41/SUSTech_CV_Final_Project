@@ -1,7 +1,11 @@
+import os
+
 import cv2
 
 
 def split_video_to_frames(video_path, output_folder):
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
     # 打开视频文件
     video = cv2.VideoCapture(video_path)
 
@@ -30,9 +34,9 @@ def split_video_to_frames(video_path, output_folder):
     video.release()
 
 
-# 示例用法
-video_path = 'path/to/video.mp4'  # 替换为视频文件的路径
-output_folder = 'path/to/output/folder'  # 替换为保存图像的文件夹路径
 
-# 调用函数进行视频分割
-split_video_to_frames(video_path, output_folder)
+if __name__ == '__main__':
+    video_path = 'video.mp4'  # 替换为视频文件的路径
+    output_folder = 'video/output'  # 替换为保存图像的文件夹路径
+    # 调用函数进行视频分割
+    split_video_to_frames(video_path, output_folder)
