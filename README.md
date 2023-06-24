@@ -24,20 +24,14 @@ conda install numpy
 conda install keras
 conda activate CVProj
 ```
-## Usage
+## File Structure
 
-### Train and evaluate all models
-... explain the works ...
+### video.py
+Save the video by frame as an image dataset
 
-run commands as follows:
-```
-TODO
-```
+### face_recognization.py
+The script includes function for face verification(verifyTest), function for face recognition(findTest),function for face detection(representTest) and funtion for analysis(analysisTest).
+The script is mainly used to recognize faces in a given dataset.
 
-### Use trained models to recognize faces
-... explain the works ...
-
-run commands as follows:
-```
-TODO
-```
+### eval.py
+The script can be used to evaluate the best model and the best model metric.
