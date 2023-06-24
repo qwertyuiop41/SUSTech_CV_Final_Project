@@ -35,3 +35,6 @@ The script is mainly used to recognize faces in a given dataset.
 
 ### eval.py
 The script can be used to evaluate the best model and the best model metric.
+
+### pretrain.py
+Using VGG-Face model as start point, fine-tune the model with a part of VGG Face2 dataset
