@@ -71,7 +71,7 @@ if __name__ == '__main__':
     # grid_precision = [[0, 0, 0] for _ in range(10)]
     # grid_recall = [[0, 0, 0] for _ in range(10)]
 
-    for i in range(6,len(models)):
+    for i in range(len(models)):
         model = models[i]
         for j in range(len(metrics)):
             metric = metrics[j]
