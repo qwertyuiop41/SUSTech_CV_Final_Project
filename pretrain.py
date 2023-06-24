@@ -62,9 +62,9 @@ logger.info(labels)
 model = DeepFace.build_model("VGG-Face")
 model.compile(optimizer=Adam(learning_rate=0.001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 # 训练模型
-epochs = 5
+epochs = 6
 defined_epochs=epochs
-e=1
+e=3
 while epochs>0:
     model.fit(
         train_generator,
