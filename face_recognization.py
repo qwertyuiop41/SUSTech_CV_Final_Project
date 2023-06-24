@@ -6,8 +6,10 @@ import numpy as np
 import pandas as pd
 import cv2
 from deepface import DeepFace
+from matplotlib import pyplot as plt
 
-logging.basicConfig(filename='face_detection.log')
+from video import split_video_to_frames
+
 dataset = [
     ["dataset/img1.jpg", "dataset/img2.jpg", True],
     ["dataset/img5.jpg", "dataset/img6.jpg", True],
@@ -28,6 +30,9 @@ metrics = ["cosine", "euclidean", "euclidean_l2"]
 # metric_name = metrics[0]
 detectors = ["opencv", "mtcnn"]
 db_path="/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset"
+
+num_cases = 0
+succeed_cases = 0
 
 def evaluate(condition):
     global num_cases, succeed_cases
@@ -96,21 +101,55 @@ def analysisTest():
     print("----------------------------------------------------------------------------------------------")
 
 
-def findTest(img_path):
+def findTest(img_path,database_path):
+    d_path=database_path
+    if database_path.endswith(".mp4"):
+        video_out='video/output'
+        split_video_to_frames(database_path,video_out )
+        d_path=video_out
+    img0 = plt.imread(img_path)
+    plt.subplot(2, 2, 1)
+    plt.imshow(img0)
+    plt.title('origin img')
+    plt.axis('off')
+    plt.savefig('faceRecognization/origin.png')
     print("从数据集中检索当前人脸相似的图片:DeepFace.find")
-    dfs = DeepFace.find(img_path="dataset/img22.jpg", db_path="dataset")
+    dfs = DeepFace.find(img_path=img_path, db_path=d_path)
     for df in dfs:
         assert isinstance(df, pd.DataFrame)
         print(df.head())
         evaluate(df.shape[0] > 0)
+    result = np.array(dfs[0])
+    with open('faceRecognization/result.txt', 'w') as file:
+        file.write(str(dfs))
+        for item in result:
+            file.write(str(item) + '\n')
 
-    # print('-----------')
+    for i in range(len(result)):
+        print('-------------------')
+        path=result[i][0]
+        print(path)
+        imgi = plt.imread(path)
+        # plt.subplot(2, 2, i + 2)
+        plt.imshow(imgi)
+        if i == 0:
+            print('best match ' + path)
+            plt.title('best match' + path)
+        else:
+            print('match ' + path)
+            plt.title('match' + path)
+        plt.savefig('faceRecognization/'+str(i)+'.png')
+        plt.axis('off')
+        plt.tight_layout(h_pad=1)
+        plt.show()
+    # # print('-----------')
     # for line in dfs_np[0]:
     #     print(line)
     #     match_path=line[0]
     #     result = DeepFace.verify(img1_path=img_path, img2_path=match_path)
     #     print(result)
     #     print(result['verified'])
+
 
     return dfs
     # print(succeed_cases / num_cases)
@@ -163,10 +202,13 @@ def representTest():
         print("特征维度为：{}".format(len(result)))
 
 
-# verifyTest()
-# analysisTest()
-findTest(img_path="/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img22.jpg")
-# representTest()
+
+
+if __name__ == '__main__':
+    # verifyTest()
+    # analysisTest()
+    findTest(img_path="/Users/siyiwang/Desktop/wsy/CV/deepface/tests/dataset/img3.jpg",database_path=db_path)
+    # representTest()
 
 
 
